@@ -3,10 +3,11 @@ class Solution {
         int n = nums.length;
         if (n <= 2) return n;
 
-        int k = 2; // write index
+        int k = 2; // index to place next valid element
 
         for (int i = 2; i < n; i++) {
-            // Allow nums[i] only if it is not the same as nums[k-2]
+            // Allow current number only if it is different
+            // from the element two positions before
             if (nums[i] != nums[k - 2]) {
                 nums[k] = nums[i];
                 k++;
