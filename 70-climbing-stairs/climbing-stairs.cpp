@@ -1,7 +1,7 @@
 class Solution {
 public:
     int climbStairs(int n) {
-        vector<int> dp(n+1,-1);
+        vector<int>dp(n+1,-1);
         return count(n,dp);
     }
     int count(int n,vector<int>&dp)
@@ -13,12 +13,9 @@ public:
         else
         {
             if(dp[n]!=-1)
-            {
                 return dp[n];
-            }
             else
-            return dp[n]=count(n-1,dp)+count(n-2,dp);
+                return dp[n]=count(n-1,dp)+count(n-2,dp);
         }
-        
     }
 };
