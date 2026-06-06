@@ -1,3 +1,4 @@
+#include <algorithm>
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -7,15 +8,9 @@ public:
         int n=nums.size();
         int ans=0,start,end;
         int temp=0;
-        for(int i=0;i<n-1;i++){
-            for(int j=0;j<n-i-1;j++){
-                if(nums[j]>nums[j+1]){
-                    temp=nums[j];
-                    nums[j]=nums[j+1];
-                    nums[j+1]=temp;
-                }
-            }
-        }
+        
+
+        sort(nums.begin(), nums.end());
         for(int i=0;i<n-2;i++){
             ans=target-nums[i];
             start=i+1;
