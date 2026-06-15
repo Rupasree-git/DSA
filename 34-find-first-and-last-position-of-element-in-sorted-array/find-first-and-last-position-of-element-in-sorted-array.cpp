@@ -4,26 +4,6 @@ public:
         int fi=index(nums,target);
         int li=index1(nums,target);
         vector<int>a(2,-1);
-        /*if(nums.size()==0)
-        return a;*/
-        
-        /*
-         reverse(nums.begin(),nums.end());
-        
-        for (int i=0;i<nums.size();i++)
-        cout<<nums[i];
-         cout<<li;
-        if(fi||li)
-        {   li+=1;
-            //int l=nums.size()-li-1;
-            a={fi,li};
-            return a;
-        }
-        else if(li==0 && fi==0)
-        {   
-            a={fi,li};
-            return a;
-        }*/
         a={fi,li};
         return a;
     }
