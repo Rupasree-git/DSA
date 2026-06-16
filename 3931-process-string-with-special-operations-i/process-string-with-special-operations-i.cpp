@@ -2,8 +2,8 @@ class Solution {
 public:
     string processStr(string s) {
         int l=s.size();
-        string result="",s1="";
-        if(1<=l<=20)
+        string result="";
+        if(1<=l && l<=20)
         {
             for(int i=0;i<l;i++)
             {
@@ -11,23 +11,17 @@ public:
                 {
                     result=result+s[i];
                 }
-                else if (s[i]=='*' && s!="" && result!="")
+                else if (s[i]=='*' && result!="")
                 {
                     result.pop_back();
                 }
                 else if(s[i]=='#')
-                {
-                    s1=s1+result;
-                    result=result+s1;
-                    s1="";
+                {                    
+                    result=result+result;                    
                 }
                 else if(s[i]=='%')
                 {
                     reverse(result.begin(),result.end());
-                }
-                else
-                {
-                    result=result;
                 }
             }
         }
