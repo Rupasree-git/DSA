@@ -1,49 +1,55 @@
 class Solution {
 public:
     char processStr(string s, long long k) {
-        long long len = 0;
-
-        // Forward pass: compute final length only
-        for(char c : s) {
-            if(c >= 'a' && c <= 'z') {
-                len++;
+        long long len=0;
+        for (int i=0;i<s.size();i++)
+        {
+            if(s[i]>='a' && s[i]<='z')
+            {
+               len++;
             }
-            else if(c == '*') {
-                if(len > 0) len--;
-            }
-            else if(c == '#') {
-                len *= 2;
-            }
-            // '%' does not change length
-        }
-
-        if(k >= len) return '.';
-
-        // Backward pass
-        for(int i = s.size() - 1; i >= 0; i--) {
-            char c = s[i];
-
-            if(c >= 'a' && c <= 'z') {
-                if(k == len - 1)
-                    return c;
+            else  if(s[i]=='*')
+            {
+                if(len>0)
                 len--;
             }
-            else if(c == '#') {
-                long long oldLen = len / 2;
-
-                if(k >= oldLen)
-                    k -= oldLen;
-
-                len = oldLen;
-            }
-            else if(c == '%') {
-                k = len - 1 - k;
-            }
-            else if(c == '*') {
-                len++;
-            }
+            else if (s[i]=='#')
+                len=len*2;
+            
         }
+        if(k>=len)
+            return '.';
+        for(int i=s.size()-1;i>=0;i--)
+        {
+            char c=s[i];
+            if(c>='a' && c<='z')
+            {
+                if(k==len-1)
+                {
+                    return c;
+                }
+                else
+                    len--;
+            }
+            else if(c=='#')
+            {
+                len=len/2;
+                if(k>=len)
 
+                    k-=len;
+            }
+            else if(c=='*')
+            {
+                len++;
+                
+            }
+            else if(c=='%')
+            {
+                k=len-1-k;
+            }
+                  
+             
+        }
         return '.';
     }
 };
